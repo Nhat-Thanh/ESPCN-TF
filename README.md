@@ -1,4 +1,4 @@
-# ESPCN-TF
+# [Tensorflow] Real-Time Super-Resolution 
 
 Implementation of ESPCN model in **Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network** paper with Tensorflow 2x. 
 
