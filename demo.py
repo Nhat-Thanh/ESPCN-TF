@@ -32,7 +32,7 @@ model.load_weights(ckpt_path)
 lr_image = read_image(image_path)
 bicubic_image = upscale(lr_image, scale)
 write_image("bicubic.png", bicubic_image)
-sr_image = rgb2ycbcr(bicubic_image).numpy()
+# sr_image = rgb2ycbcr(bicubic_image).numpy()
 
 
 # -----------------------------------------------------------
@@ -41,19 +41,23 @@ sr_image = rgb2ycbcr(bicubic_image).numpy()
 start = time.perf_counter()
 lr_image = gaussian_blur(lr_image, sigma=0.3)
 lr_image = rgb2ycbcr(lr_image)
-Y_chanel = norm01(lr_image[:, :, 0, tf.newaxis])
-Y_chanel = tf.expand_dims(Y_chanel, axis=0)
+lr_image = norm01(lr_image)
+# Y_chanel = norm01(lr_image[:, :, 0, tf.newaxis])
+# Y_chanel = tf.expand_dims(Y_chanel, axis=0)
 
 
 # -----------------------------------------------------------
 #  predict and save image
 # -----------------------------------------------------------
 
-Y_sr = model.predict(Y_chanel)[0]
+# Y_sr = model.predict(Y_chanel)[0]
+sr_image = model.predict(lr_image)[0]
 
-Y_sr = denorm01(Y_sr[:,:,0])
-Y_sr = np.uint8(Y_sr)
-sr_image[:,:,0] = Y_sr
+# Y_sr = denorm01(Y_sr[:,:,0])
+sr_image = denorm01(sr_image)
+# Y_sr = np.uint8(Y_sr)
+sr_image = np.uint8(sr_image)
+# sr_image[:,:,0] = Y_sr
 sr_image = ycbcr2rgb(sr_image)
 
 end = time.perf_counter()
