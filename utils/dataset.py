@@ -28,7 +28,7 @@ class dataset:
             hr_image = read_image(image_path)
             hr_image = rgb2ycbcr(hr_image)
             # *Y chanel - shape = [h, w, 1]
-            hr_image = hr_image[:, :, 0, tf.newaxis]
+            # hr_image = hr_image[:, :, 0, tf.newaxis]
 
             h = hr_image.shape[0]
             w = hr_image.shape[1]
