@@ -41,7 +41,7 @@ write_image("bicubic.png", bicubic_image)
 start = time.perf_counter()
 lr_image = gaussian_blur(lr_image, sigma=0.3)
 lr_image = rgb2ycbcr(lr_image)
-lr_image = norm01(lr_image)
+lr_image = norm01(lr_image[tf.newaxis, ...])
 # Y_chanel = norm01(lr_image[:, :, 0, tf.newaxis])
 # Y_chanel = tf.expand_dims(Y_chanel, axis=0)
 
