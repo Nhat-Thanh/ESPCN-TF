@@ -18,7 +18,7 @@ I implemented 3 models in the paper, ESPCN-x2, ESPCN-x3, ESPCN-x4
 ## Train
 You run this command to begin training:
 ```
-python train.py  --steps=1000000             \
+python train.py  --steps=300000              \
                  --scale=2                   \
                  --batch_size=128            \
                  --save-best-only=0          \
@@ -30,7 +30,7 @@ python train.py  --steps=1000000             \
 
 **NOTE**: if you want to re-train a new model, you should delete all files in sub-directories in **checkpoint** directory. Your checkpoint will be saved when above command finishs and can be used for the next times, so you can train a model on Google Colab without taking care of GPU time limit.
 
-I trained 3 models on Google Colab in 1000000 steps: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Z2CHYJvC_bs8-_CnGDwWv-Bg8ShzjDJE?usp=sharing)
+I trained 3 models on Google Colab in 300000 steps: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Z2CHYJvC_bs8-_CnGDwWv-Bg8ShzjDJE?usp=sharing)
 
 You can get the models here
 - [ESPCN-x2.h5](checkpoint/x2/ESPCN-x2.h5)
@@ -51,11 +51,11 @@ I evaluated models with Set5 and Set14 dataset by PSNR:
 
 <div align="center">
 
-|   Model  |  Set5   |  Set14  |
-|:--------:|:-------:|:-------:|
-| ESPCN-x2 | 31.3489 | 28.6103 |
-| ESPCN-x3 | 28.5445 | 25.9767 |
-| ESPCN-x4 | 26.5866 | 24.3839 |
+|   Model  |  Set5   |  Set14  |  BSD100  | Urban100 |
+|:--------:|:-------:|:-------:|:--------:|:--------:|
+| ESPCN-x2 | 34.5470 | 33.1083 | 32.9382  |  30.7794 |
+| ESPCN-x3 | 34.6995 | 31.3241 | 31.3362  |     X    |
+| ESPCN-x4 | 32.1087 | 29.4295 | 29.7396  |  27.0997 |
 
 </div>
 
