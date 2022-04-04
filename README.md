@@ -47,7 +47,7 @@ python demo.py --image-path="dataset/test1.png"        \
                --scale=4
 ```
 
-I evaluated models with Set5 and Set14 dataset by PSNR:
+I evaluated models with Set5, Set14, BSD100 and Urban100 dataset by PSNR:
 
 <div align="center">
 
