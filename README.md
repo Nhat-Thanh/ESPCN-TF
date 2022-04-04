@@ -2,6 +2,8 @@
 
 Implementation of ESPCN model in **Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network** paper with Tensorflow 2x. 
 
+**Pytorch version**: https://github.com/Nhat-Thanh/ESPCN-Pytorch
+
 I used Adam with optimize tuned hyperparameters instead of SGD + Momentum. 
 
 I implemented 3 models in the paper, ESPCN-x2, ESPCN-x3, ESPCN-x4 
@@ -40,9 +42,9 @@ You can get the models here
 ## Demo 
 After Training, you can test models with this command, the result is the **sr.png**.
 ```
-python demo.py --image-path="/content/ESPCN-TF/dataset/test1.png"        \
-               --ckpt-path="/content/ESPCN-TF/checkpoint/x2/ESPCN-x2.h5" \
-               --scale=2
+python demo.py --image-path="dataset/test1.png"        \
+               --ckpt-path="checkpoint/x4/ESPCN-x4.h5" \
+               --scale=4
 ```
 
 I evaluated models with Set5 and Set14 dataset by PSNR:
@@ -68,6 +70,8 @@ Source: game ZingSpeed Mobile
 
 ## References
 - Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network: https://arxiv.org/abs/1609.05158
-- SunHays80: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/SunHays80_SR.zip
+- T91, General100: http://vllab.ucmerced.edu/wlai24/LapSRN/results/SR_training_datasets.zip
 - Set5: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/Set5_SR.zip
 - Set14: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/Set14_SR.zip
+- BSD100: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/BSD100_SR.zip
+- Urban100: https://filebox.ece.vt.edu/~jbhuang/project/selfexsr/Urban100_SR.zip
