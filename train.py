@@ -45,11 +45,6 @@ valid_set = dataset(dataset_dir, "validation")
 valid_set.generate(lr_crop_size, hr_crop_size)
 valid_set.load_data()
 
-test_set = dataset(dataset_dir, "test")
-test_set.generate(lr_crop_size, hr_crop_size)
-test_set.load_data()
-
-
 # -----------------------------------------------------------
 #  Train
 # -----------------------------------------------------------
@@ -66,11 +61,3 @@ espcn.train(train_set, valid_set,
             save_best_only=save_best_only, 
             save_every=save_every)
 
-
-# -----------------------------------------------------------
-#  Test
-# -----------------------------------------------------------
-# todo: use the best checkpoint to evaluate the test set
-espcn.load_weights(model_path)
-loss, metric = espcn.evaluate(test_set)
-print(f"loss: {loss} - psnr: {metric}")

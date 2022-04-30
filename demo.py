@@ -1,8 +1,10 @@
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = '3'
+
 from utils.common import *
 import numpy as np
 from model import ESPCN
 import argparse
-import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--scale',        type=float, default=2,                           help='-')
@@ -32,35 +34,25 @@ model.load_weights(ckpt_path)
 lr_image = read_image(image_path)
 bicubic_image = upscale(lr_image, scale)
 write_image("bicubic.png", bicubic_image)
-# sr_image = rgb2ycbcr(bicubic_image).numpy()
 
 
 # -----------------------------------------------------------
 # preprocess lr image 
 # -----------------------------------------------------------
-start = time.perf_counter()
 lr_image = gaussian_blur(lr_image, sigma=0.3)
 lr_image = rgb2ycbcr(lr_image)
 lr_image = norm01(lr_image[tf.newaxis, ...])
-# Y_chanel = norm01(lr_image[:, :, 0, tf.newaxis])
-# Y_chanel = tf.expand_dims(Y_chanel, axis=0)
 
 
 # -----------------------------------------------------------
 #  predict and save image
 # -----------------------------------------------------------
 
-# Y_sr = model.predict(Y_chanel)[0]
 sr_image = model.predict(lr_image)[0]
 
-# Y_sr = denorm01(Y_sr[:,:,0])
 sr_image = denorm01(sr_image)
-# Y_sr = np.uint8(Y_sr)
 sr_image = np.uint8(sr_image)
-# sr_image[:,:,0] = Y_sr
 sr_image = ycbcr2rgb(sr_image)
 
-end = time.perf_counter()
-print(f"Time: {end - start}")
-
 write_image("sr.png", sr_image)
+
