@@ -49,7 +49,7 @@ I use **Set5** as the test set. After Training, you can test models with scale f
 ```
 python test.py --scale=2 --ckpt-path="default"
 ```
-- **--ckpt-path="default"** means you are using default model path, aka **checkpoint/x{scale}/FSRCNN-x{scale}.h5**. If you want to use your trained model, you can pass yours to **--ckpt-path**.
+- **--ckpt-path="default"** means you are using default model path, aka **checkpoint/x{scale}/ESPCN-x{scale}.h5**. If you want to use your trained model, you can pass yours to **--ckpt-path**.
 
 ## Demo 
 After Training, you can test models with this command, the result is the **sr.png**.
